@@ -15,8 +15,10 @@ class PKTriangle {
 		void calculate_(double par1,double par2, double par3);
 	public:
 		PKTriangle(double par1,double par2,double par3,std::string opts);	
-		double* GetSides();
-		double* GetAngles();
+
+		double* GetAngles(){return angles;}
+		double* GetSides(){return sides;}
+		bool isRightAngled();
 		void Print();		
 };
 
