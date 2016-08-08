@@ -18,6 +18,7 @@ class PKMatrix {
 		void addColumn(PKVar,PKVar,PKVar,PKVar,PKVar,PKVar,PKVar,PKVar,PKVar,PKVar);
 		PKMatrix operator + (PKMatrix);
 		PKMatrix operator - (PKMatrix);
+		PKMatrix operator * (PKMatrix);
 		PKMatrix Transpose();
 };
 void PKMatrix::addRow(PKVar x1_=PKVar(0,1E-314),PKVar x2_=PKVar(0,1E-314),PKVar x3_=PKVar(0,1E-314),PKVar x4_=PKVar(0,1E-314),PKVar x5_=PKVar(0,1E-314),PKVar x6_=PKVar(0,1E-314),PKVar x7_=PKVar(0,1E-314),PKVar x8_=PKVar(0,1E-314),PKVar x9_=PKVar(0,1E-314),PKVar x10_=PKVar(0,1E-314))
@@ -71,7 +72,6 @@ PKMatrix PKMatrix::operator + (PKMatrix param)
 	std::vector<std::vector<PKVar> > y_;
 	for(int n=0;n<elements_.size();++n){y_.push_back(x_);}
 	PKMatrix temp(y_);
-	std::cout << temp.elements_.size() << "\t" << temp.elements_[0].size() << "\n";
 	for(int i=0;i<temp.elements_.size();++i)
 	{
 		for(int j=0;j<temp.elements_[0].size();++j)
@@ -85,7 +85,7 @@ PKMatrix PKMatrix::operator - (PKMatrix param)
 {
 	if(param.elements_.size() != elements_.size() && param.elements_[0].size() != elements_[0].size())
 	{
-		std::cout << "ERROR: Cannot add matrices of varying dimensions\n";
+		std::cout << "ERROR: Cannot subtract matrices of varying dimensions\n";
 		return PKMatrix();
 	}
 	std::vector<PKVar> x_;
@@ -118,5 +118,32 @@ PKMatrix PKMatrix::Transpose()
         }
         return temp;
 }
+PKMatrix PKMatrix::operator * (PKMatrix param)
+{
+	if(param.elements_.size() != elements_[0].size())
+	{
+		std::cout << "ERROR: cannot multiply matrices with set dimensions\n";
+		return PKMatrix();
+	}
+
+	std::vector<PKVar> x_;
+        for(int m=0;m<elements_[0].size();++m){x_.push_back(PKVar(0,0));}
+        std::vector<std::vector<PKVar> > y_;
+        for(int n=0;n<elements_.size();++n){y_.push_back(x_);}
+        PKMatrix temp(y_);
+	for(int i=0;i<temp.elements_.size();++i)
+        {
+                for(int j=0;j<temp.elements_[0].size();++j)
+                {
+			 
+                        for(int l=0;l<elements_[0].size();++l)
+			{
+				temp.elements_[i][j] = temp.elements_[i][j] + elements_[i][l]*param.elements_[l][j];
+			}
+                }
+        }
+        return temp;
+}
+
 #endif
  

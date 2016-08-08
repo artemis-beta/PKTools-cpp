@@ -23,6 +23,10 @@ int main(void)
 	PKMatrix c;
 	c = a+b;
 	c.Print();
+	std::cout << "Multiply them together:\n";
+	PKMatrix f;
+	f = a*b;
+	f.Print();
 	std::cout << "Take the Transpose:\n";;
 	c.Transpose().Print();
 
@@ -33,5 +37,5 @@ int main(void)
 	d.addRow(PKVar(6.0,0.3),PKVar(5.6,0.1));
 	d.Print();
 	std::cout << "Take the Transpose:\n";
-	d.Transpose().Print();		
+	d.Transpose().Print();
 }
