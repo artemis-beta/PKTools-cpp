@@ -23,5 +23,15 @@ int main(void)
 	PKMatrix c;
 	c = a+b;
 	c.Print();
-		
+	std::cout << "Take the Transpose:\n";;
+	c.Transpose().Print();
+
+	std::cout << "Lets Try a 2x3 matrix\n";
+	PKMatrix d;
+	d.addRow(PKVar(1.4,0.2),PKVar(5.8,0.2));
+	d.addRow(PKVar(3.2,0.1),PKVar(1.5,0.4));
+	d.addRow(PKVar(6.0,0.3),PKVar(5.6,0.1));
+	d.Print();
+	std::cout << "Take the Transpose:\n";
+	d.Transpose().Print();		
 }
