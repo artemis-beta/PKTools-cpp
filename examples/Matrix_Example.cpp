@@ -29,8 +29,10 @@ int main(void)
 	f.Print();
 	std::cout << "Take the Transpose:\n";;
 	c.Transpose().Print();
+	std::cout << "The Trace is:\n";
+	c.Trace().Print();
 
-	std::cout << "Lets Try a 2x3 matrix\n";
+	std::cout << "\nLets Try a 2x3 matrix\n";
 	PKMatrix d;
 	d.addRow(PKVar(1.4,0.2),PKVar(5.8,0.2));
 	d.addRow(PKVar(3.2,0.1),PKVar(1.5,0.4));
@@ -38,4 +40,6 @@ int main(void)
 	d.Print();
 	std::cout << "Take the Transpose:\n";
 	d.Transpose().Print();
+	std::cout << "Can't do the Trace!\n";
+	d.Trace();
 }

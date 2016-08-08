@@ -20,6 +20,7 @@ class PKMatrix {
 		PKMatrix operator - (PKMatrix);
 		PKMatrix operator * (PKMatrix);
 		PKMatrix Transpose();
+		PKVar Trace();
 };
 void PKMatrix::addRow(PKVar x1_=PKVar(0,1E-314),PKVar x2_=PKVar(0,1E-314),PKVar x3_=PKVar(0,1E-314),PKVar x4_=PKVar(0,1E-314),PKVar x5_=PKVar(0,1E-314),PKVar x6_=PKVar(0,1E-314),PKVar x7_=PKVar(0,1E-314),PKVar x8_=PKVar(0,1E-314),PKVar x9_=PKVar(0,1E-314),PKVar x10_=PKVar(0,1E-314))
 {
@@ -144,6 +145,20 @@ PKMatrix PKMatrix::operator * (PKMatrix param)
         }
         return temp;
 }
+PKVar PKMatrix::Trace()
+{
+	PKVar x_(0,0);
 
+	if(elements_[0].size() != elements_.size())
+	{
+		std::cout << "ERROR: Trace can only be calculated for a square matrix!\n";
+		return PKVar(0,0);
+	}
+	for(int i=0; i<elements_.size(); ++i)
+	{
+		x_ = x_ + elements_[i][i];
+	}
+	return x_;
+} 
 #endif
  
