@@ -63,6 +63,10 @@ PKVar PKVar::operator / (PKVar param)
 PKVar PKVar::Power(double x)
 {
 	PKVar temp;
+	if(value_ == 0 && x < 1)
+	{
+		return temp;
+	}
 	temp.value_ = pow(value_,x);
 	temp.error_ = x*pow(value_,x-1)*error_;
 	return temp;
