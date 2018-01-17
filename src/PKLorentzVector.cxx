@@ -1,22 +1,5 @@
-#ifndef __PKLORENTZVECTOR__
-#define __PKLORENTZVECTOR__
+#include "PKLorentzVector.hxx"
 
-#include "PKVar.h"
-
-class PKLorentzVector {
-
-	private:
-		PKVar X[4];
-		PKVar Magn_;
-	public:
-		PKLorentzVector();
-		PKLorentzVector(PKVar x0_,PKVar x1_,PKVar x2_, PKVar x3_);
-		PKLorentzVector(double x0_,double x1_,double x2_,double x3_,double x0err_,double x1err_,double x2err_, double x3err_);
-		PKVar getMagnitude();
-		PKLorentzVector operator + (PKLorentzVector);
-		PKLorentzVector operator - (PKLorentzVector);
-		void Print();
-};
 PKLorentzVector::PKLorentzVector()
 {
 	for(int i=0;i<=3;++i){X[i] = PKVar(0,0);}
@@ -56,4 +39,3 @@ void PKLorentzVector::Print()
 	std::cout << ","; X[2].Print(); std::cout  << ","; X[3].Print();
 	std::cout <<  ")";
 }
-#endif

@@ -1,5 +1,5 @@
 #include <iostream>
-#include "PKMatrix.h"
+#include "PKMatrix.hxx"
 
 int main(void)
 {

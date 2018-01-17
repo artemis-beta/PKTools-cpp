@@ -1,27 +1,8 @@
-#ifndef __PKVAR__
-#define __PKVAR__
+#include "PKVar.hxx"
 
 #include <cmath>
 #include <iostream>
 
-class PKVar {
-
-	private:
-		double value_;
-		double error_;
-	public:
-		double GetVal();
-		double GetError();
-		void Print();
-		PKVar(double value, double error);
-		PKVar();
-		PKVar Power(double x);
-		PKVar Sqrt();
-		PKVar operator + (PKVar);
-		PKVar operator - (PKVar);
-		PKVar operator * (PKVar);
-		PKVar operator / (PKVar);
-};
 PKVar::PKVar()
 {value_ = 0; error_ = 0;}
 PKVar::PKVar(double value, double error)
@@ -75,4 +56,3 @@ PKVar PKVar::Sqrt()
 {
 	return Power(0.5);
 } 
-#endif
