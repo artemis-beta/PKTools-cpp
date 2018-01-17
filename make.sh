@@ -1,3 +1,5 @@
+mkdir -p bin
+mkdir -p obj
 make PROGRAM=Matrix_Example
 make PROGRAM=PKTriangle_Example
 make PROGRAM=AddPKVars
