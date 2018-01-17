@@ -1,5 +1,5 @@
 #include <iostream>
-#include "PKTriangle.h"
+#include "PKTriangle.hxx"
 #include <cmath>
 
 int main(void)

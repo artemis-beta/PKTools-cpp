@@ -1,5 +1,5 @@
 #include <iostream>
-#include "PKTree.h"
+#include "PKTree.hxx"
 #include <vector>
 
 int main(void)
@@ -9,7 +9,7 @@ int main(void)
 	PKTree * tree = new PKTree("test_tree");
 	tree->addBranch("testBranch");
 	tree->fillBranch("testBranch", x);
-    PKBranch* branch = tree->getBranch("testBranch");
-    tree->Print();
-    (*tree->getEntry("testBranch", 6)).Print();
+    	PKBranch* branch = tree->getBranch("testBranch");
+    	tree->Print();
+    	(*tree->getEntry("testBranch", 6)).Print();
 }

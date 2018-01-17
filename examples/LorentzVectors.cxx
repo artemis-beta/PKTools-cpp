@@ -1,5 +1,5 @@
 #include <iostream>
-#include "PKLorentzVector.h"
+#include "PKLorentzVector.hxx"
 
 int main(void)
 {

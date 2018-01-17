@@ -1,5 +1,5 @@
 #include <iostream>
-#include "PKComplexVar.h"
+#include "PKComplexVar.hxx"
 
 int main(void)
 {
@@ -15,8 +15,8 @@ int main(void)
 	std::cout << "x * y = " << w.returnString() << std::endl;
 	PKComplexVar u = x/y;
 	std::cout << "x / y = " << u.returnString() << std::endl;
-	PKComplexVar t = 20*y;
-	std::cout << "20 * y = " << t.returnString() << std::endl;
+	PKComplexVar t = y*20;
+	std::cout << "y*20 = " << t.returnString() << std::endl;
 	PKComplexVar s = x/4.;
 	std::cout << "x / 4. = " << s.returnString() << std::endl;
 }

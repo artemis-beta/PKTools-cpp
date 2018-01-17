@@ -4,7 +4,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 #include <iostream>
 #include <cmath>
-#include "PKRectangle.h"
+#include "PKRectangle.hxx"
 #include <string>
 
 PKRectangle::PKRectangle(double par1, double par2){	//constructor

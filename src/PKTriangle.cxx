@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cmath>
-#include "PKTriangle.h"
+#include "PKTriangle.hxx"
 
 double CosineRuleSide(double side1, double side2, double angle)
 {return pow(pow(side1,2)+pow(side2,2) - 2*side1*side2*cos(angle),0.5);}

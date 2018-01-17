@@ -1,5 +1,5 @@
 #include <iostream>
-#include "PKVar.h"
+#include "PKVar.hxx"
 
 int main(void)
 {

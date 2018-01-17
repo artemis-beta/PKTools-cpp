@@ -1,7 +1,6 @@
 //Joel C. Swallow 2.8.16////////////////////////////////////////////////////////////////////////////
 #include <iostream>
-#include "PKRectangle.h"
-//#include "PKRectangle.cpp"
+#include "PKRectangle.hxx"
 
 int main(void){
     PKRectangle Rectangle1(2.0,5.0);	//JCS --> object PKRectangle with input parameters 2.0 and 5.0 (inputs are doubles)

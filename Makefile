@@ -1,13 +1,12 @@
-CXXFILES = src/PKMatrix.cxx src/PKLogger.cxx src/PKGlobalDef.cxx src/PKVar.cxx src/PKLorentzVector.cxx src/PKComplexVar.cxx
-PROGRAM = Matrix_Example
+CXXFILES = src/PKMatrix.cxx src/PKLogger.cxx src/PKGlobalDef.cxx src/PKVar.cxx src/PKTree.cxx src/PKLorentzVector.cxx src/PKComplexVar.cxx src/PKTriangle.cxx src/PKRectangle.cxx
 PROGRAM_CXX = $(PROGRAM:%=examples/%.cxx)
 PROGRAM_OBJ = $(PROGRAM:%=obj/%.o)
 CXX = g++
 CXXFLAGS = -Wall -std=c++14 -I src/
 OBJECTS=$(patsubst src/%.cxx, obj/%.o, $(CXXFILES))
 
-all: $(OBJECTS) $(PROGRAM_OBJ)
-	$(CXX) -o bin/$(PROGRAM) $(OBJECTS) $(PROGRAM_OBJ)
+$(PROGRAM): $(PROGRAM_OBJ) $(OBJECTS)
+	$(CXX) -o bin/$(PROGRAM) $(PROGRAM_OBJ) $(OBJECTS)
 
 $(OBJECTS): $(CXXFILES)
 	$(CXX) $(CXXFLAGS) -c $(CXXFILES)
@@ -18,4 +17,4 @@ $(PROGRAM_OBJ): $(PROGRAM_CXX)
 	mv *.o obj/
 
 clean:
-	rm bin/$(PROGRAM) obj/*.o
+	rm bin/* obj/*.o
