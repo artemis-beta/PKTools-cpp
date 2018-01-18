@@ -131,7 +131,7 @@ PKMatrix PKMatrix::Transpose()
 }
 PKMatrix PKMatrix::operator * (PKMatrix param)
 {
-	_matrix_logger.Info( "Commencing Matrix Multplication..." );
+	_matrix_logger.Info( "Commencing Matrix Multiplication..." );
 	_matrix_logger.Debug( "Constructing Multiplication Template" );
 	if(param.elements_.size() != elements_[0].size())
 	{

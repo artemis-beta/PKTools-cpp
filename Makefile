@@ -2,14 +2,14 @@ CXXFILES = src/PKMatrix.cxx src/PKLogger.cxx src/PKGlobalDef.cxx src/PKVar.cxx s
 PROGRAM_CXX = $(PROGRAM:%=examples/%.cxx)
 PROGRAM_OBJ = $(PROGRAM:%=obj/%.o)
 CXX = g++
-CXXFLAGS = -Wall -std=c++14 -I src/
+CXXFLAGS = -Wall -std=c++14 -I include/ -I $(BOOSTINCLUDE)
 OBJECTS=$(patsubst src/%.cxx, obj/%.o, $(CXXFILES))
 
 $(PROGRAM): $(PROGRAM_OBJ) $(OBJECTS)
 	$(CXX) -o bin/$(PROGRAM) $(PROGRAM_OBJ) $(OBJECTS)
 
 $(OBJECTS): $(CXXFILES)
-	$(CXX) $(CXXFLAGS) -c $(CXXFILES)
+	$(CXX) $(CXXFLAGS) -c $(CXXFILES) $(FMTFILE)
 	mv *.o obj/
 
 $(PROGRAM_OBJ): $(PROGRAM_CXX)

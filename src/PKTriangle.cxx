@@ -1,5 +1,3 @@
-#include <iostream>
-#include <cmath>
 #include "PKTriangle.hxx"
 
 double CosineRuleSide(double side1, double side2, double angle)
@@ -10,6 +8,7 @@ void PKTriangle::calculate_(double par1,double par2,double par3)
 {
 	if(type_ == "AAS")
 	{
+		_triangle_logger.Info( "Performing Calculation for Angle-Angle-Side" );
 		angles[0] = par1*1.0;
 		angles[1] = par2*1.0;
 		sides[2] = par3*1.0;
@@ -17,9 +16,11 @@ void PKTriangle::calculate_(double par1,double par2,double par3)
 		angles[2] = pi - (par1+par2);
 		sides[1] = (sides[2]/sin(angles[2]))*sin(angles[1]);
 		sides[0] = (sides[2]/sin(angles[2]))*sin(angles[0]);
+		
 	}
 	else
 	{
+		_triangle_logger.Info( "Performing Calculation for Side-Side-Angle" );
 		sides[0] = par1*1.0;
 		sides[1] = par2*1.0;
 		angles[2] = par3*1.0;
@@ -27,7 +28,9 @@ void PKTriangle::calculate_(double par1,double par2,double par3)
 		sides[2] = CosineRuleSide(sides[0],sides[1],angles[2]);
 		angles[0] = asin((sin(angles[2])/sides[2])*sides[0]);
 		angles[1] = asin((sin(angles[2])/sides[2])*sides[1]);
+
 	}
+	_triangle_logger.Debug( "Calculated Angles (%1%,%2%,%3%) and Sides (%4%,%5%,%6%)", std::to_string(angles[0]), std::to_string(angles[1]), std::to_string(angles[2]), std::to_string(sides[0]), std::to_string(sides[1]), std::to_string(sides[2]));
 }		
 		 
 PKTriangle::PKTriangle(double par1,double par2,double par3,std::string opts)

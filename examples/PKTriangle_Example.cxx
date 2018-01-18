@@ -2,8 +2,11 @@
 #include "PKTriangle.hxx"
 #include <cmath>
 
+#include "PKGlobalDef.hxx"
+
 int main(void)
 {
+    setLoggerLevel("DEBUG");
     PKTriangle triangle(3,3,(4./3.)*atan(1),"SSA");
     std::cout << "Triangle 1:\t";
     triangle.Print();

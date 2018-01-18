@@ -1,6 +1,6 @@
 #include "PKGlobalDef.hxx"
 
-Level _global_logger_level = INFO;
+Level _global_logger_level = ERROR;
 
 void setLoggerLevel( std::string level_str )
 { 

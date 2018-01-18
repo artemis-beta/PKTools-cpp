@@ -1,6 +1,8 @@
 #include <iostream>
 #include "PKMatrix.hxx"
 
+#include "PKGlobalDef.hxx"
+
 int main(void)
 {
 	PKMatrix a,b;

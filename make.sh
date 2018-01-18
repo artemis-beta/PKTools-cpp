@@ -1,8 +1,11 @@
 mkdir -p bin
 mkdir -p obj
-make PROGRAM=Matrix_Example
-make PROGRAM=PKTriangle_Example
-make PROGRAM=AddPKVars
-make PROGRAM=AddPKComplexVars
-make PROGRAM=LorentzVectors
-make PROGRAM=PKRectangle_Example
+
+export BOOSTINCLUDE=/usr/include
+
+make PROGRAM=Matrix_Example FMTLIB=/usr/local/include/ 
+make PROGRAM=PKTriangle_Example BOOSTINCLUDE=$BOOSTINCLUDE
+make PROGRAM=AddPKVars FMTLIB=/usr/local/include/
+make PROGRAM=AddPKComplexVars FMTLIB=/usr/local/include/
+make PROGRAM=LorentzVectors FMTLIB=/usr/local/include/
+make PROGRAM=PKRectangle_Example FMTLIB=/usr/local/include/
