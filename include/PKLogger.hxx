@@ -20,6 +20,8 @@ class PKLogger
         PKLogger( std::string );
         void Error( std::string msg, std::string a="", std::string b="", std::string c="",
                     std::string d="", std::string e="", std::string f="", std::string g="" );
+        void Warning( std::string msg, std::string a="", std::string b="", std::string c="",
+                    std::string d="", std::string e="", std::string f="", std::string g="" );
         void Info( std::string msg, std::string a="", std::string b="", std::string c="",
                     std::string d="", std::string e="", std::string f="", std::string g="" );
         void Debug( std::string msg, std::string a="", std::string b="", std::string c="",

@@ -4,6 +4,8 @@
 #include <iostream>
 #include <string>
 #include <cmath>
+#include <stdlib.h>
+
 #include "PKLogger.hxx"
 
 const double pi = 4*atan(1);

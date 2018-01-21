@@ -12,7 +12,7 @@ class PKLorentzVector {
 	public:
 		PKLorentzVector();
 		PKLorentzVector(PKVar x0_,PKVar x1_,PKVar x2_, PKVar x3_);
-		PKLorentzVector(double x0_,double x1_,double x2_,double x3_,double x0err_,double x1err_,double x2err_, double x3err_);
+		PKLorentzVector(float x0_,float x1_,float x2_,float x3_,float x0err_,float x1err_,float x2err_, float x3err_);
 		PKVar getMagnitude();
 		PKLorentzVector operator + (PKLorentzVector);
 		PKLorentzVector operator - (PKLorentzVector);

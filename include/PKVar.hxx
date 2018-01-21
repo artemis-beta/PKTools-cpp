@@ -4,15 +4,15 @@
 class PKVar {
 
 	private:
-		double value_;
-		double error_;
+		float value_;
+		float error_;
 	public:
-		double GetVal();
-		double GetError();
+		float getVal();
+		float getError();
 		void Print();
-		PKVar(double value, double error);
+		PKVar(float value, float error);
 		PKVar();
-		PKVar Power(double x);
+		PKVar Power(float x);
 		PKVar Sqrt();
 		PKVar operator + (PKVar);
 		PKVar operator - (PKVar);

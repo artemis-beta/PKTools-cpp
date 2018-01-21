@@ -32,6 +32,12 @@ void PKLogger::Error( std::string msg, std::string a, std::string b, std::string
     _global_out( ERROR, "ERROR", _logger_name, msg, a, b, c, d, e, f, g );
 }
 
+void PKLogger::Warning( std::string msg, std::string a, std::string b, std::string c,
+                    std::string d, std::string e, std::string f, std::string g )
+{
+    _global_out( WARNING, "WARNING", _logger_name, msg, a, b, c, d, e, f, g );
+}
+
 void PKLogger::Info( std::string msg, std::string a, std::string b, std::string c,
                     std::string d, std::string e, std::string f, std::string g )
 {

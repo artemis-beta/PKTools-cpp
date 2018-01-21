@@ -46,7 +46,7 @@ std::string PKComplexVar::returnString(int opt)
 	switch(opt)
 	{
 		case 0:
-			if(_real != 0 || _imagin != 0)
+			if(_real != 0 || _imagin == 0)
 			{
 				outstring += std::to_string(_real);
 			}
@@ -75,8 +75,16 @@ std::string PKComplexVar::returnString(int opt)
 				outstring += std::to_string(_imagin) + "i*sin(" + std::to_string(_arg) + ")";
 			}
 			break;
+		default:
+			std::cout << "ERROR: Invalid integer argument for PKComplexVar::Print(int) options are 0, 1, 2" << std::endl;
+			exit(EXIT_FAILURE);
 	}
 	return outstring;
+}
+
+void PKComplexVar::Print(int opt, int precision)
+{
+	std::cout << std::setprecision(precision) << returnString(opt) << std::endl;
 }
 
 PKComplexVar PKComplexVar::operator + (PKComplexVar other)
@@ -183,4 +191,16 @@ PKComplexVar operator * (double other, PKComplexVar pkv)
 	if(pkv.getRe() != 0){temp._setReal(pkv.getRe()*other);}
 	if(pkv.getIm() != 0){temp._setImag(pkv.getIm()*other);}
 	return temp;
+}
+
+bool PKComplexVar::operator == (PKComplexVar other)
+{
+	if(this->getRe() != other.getRe()){return false;}
+	if(this->getIm() != other.getIm()){return false;}
+	return true;
+}
+
+bool PKComplexVar::operator != (PKComplexVar other)
+{
+	return !(*this == other);
 }

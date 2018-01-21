@@ -39,8 +39,10 @@ PKTriangle::PKTriangle(double par1,double par2,double par3,std::string opts)
 
 	if(type_ != "AAS" && type_ != "SSA")
 	{	
-		std::cout << "ERROR: Invalid Type of '" << type_ << "', options are 'AAS' or 'SSA'\n"; 
+		_triangle_logger.Error( "Invalid Type of '%1%', options are 'AAS' or 'SSA'", type_ ); 
+		exit(EXIT_FAILURE);
 	}
+	_triangle_logger.Info( "Initialising Triangle of Type '%1%'", type_ );
 	calculate_(par1,par2,par3);
 }
 void PKTriangle::Print()

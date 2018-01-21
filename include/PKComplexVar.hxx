@@ -3,6 +3,8 @@
 
 #include <cmath>
 #include <iostream>
+#include <iomanip>
+#include <stdlib.h>
 
 class PKComplexVar
 {
@@ -20,6 +22,7 @@ class PKComplexVar
 		float getMod();
 		float getArg();
 		std::string returnString(int opt=0);
+		void Print(int opt=0, int precision=3);
 
 	PKComplexVar(float, float);
 	PKComplexVar operator + (PKComplexVar);
@@ -32,6 +35,8 @@ class PKComplexVar
 	PKComplexVar operator * (int);
 	PKComplexVar operator * (float);
 	PKComplexVar operator * (double);
+	bool operator == (PKComplexVar);
+	bool operator != (PKComplexVar);
 	PKComplexVar Conjugate();
 };
 

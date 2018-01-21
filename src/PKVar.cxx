@@ -5,13 +5,13 @@
 
 PKVar::PKVar()
 {value_ = 0; error_ = 0;}
-PKVar::PKVar(double value, double error)
+PKVar::PKVar(float value, float error)
 {
 	value_ = value;
 	error_ = error;
 }
-double PKVar::GetVal(){return value_;}
-double PKVar::GetError(){return error_;}
+float PKVar::getVal(){return value_;}
+float PKVar::getError(){return error_;}
 void PKVar::Print(){std::cout << value_ << " +/- " << error_;}
 PKVar PKVar::operator + (PKVar param)
 {
@@ -41,7 +41,7 @@ PKVar PKVar::operator / (PKVar param)
 	temp.error_ = pow(pow(error_/param.value_,2)+pow(value_*param.error_,2)*pow(param.value_,-4),0.5);
 	return temp;
 }
-PKVar PKVar::Power(double x)
+PKVar PKVar::Power(float x)
 {
 	PKVar temp;
 	if(value_ == 0 && x < 1)

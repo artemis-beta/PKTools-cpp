@@ -1,8 +1,8 @@
-CXXFILES = src/PKMatrix.cxx src/PKLogger.cxx src/PKGlobalDef.cxx src/PKVar.cxx src/PKTree.cxx src/PKLorentzVector.cxx src/PKComplexVar.cxx src/PKTriangle.cxx src/PKRectangle.cxx
+CXXFILES = src/PKConstMatrix.cxx src/PKMatrix.cxx src/PKCompMatrix.cxx src/PKLogger.cxx src/PKGlobalDef.cxx src/PKVar.cxx src/PKTree.cxx src/PKLorentzVector.cxx src/PKComplexVar.cxx src/PKTriangle.cxx src/PKRectangle.cxx
 PROGRAM_CXX = $(PROGRAM:%=examples/%.cxx)
 PROGRAM_OBJ = $(PROGRAM:%=obj/%.o)
 CXX = g++
-CXXFLAGS = -Wall -std=c++14 -I include/ -I $(BOOSTINCLUDE)
+CXXFLAGS =  -std=c++14 -I include/ -I $(BOOSTINCLUDE)
 OBJECTS=$(patsubst src/%.cxx, obj/%.o, $(CXXFILES))
 
 $(PROGRAM): $(PROGRAM_OBJ) $(OBJECTS)
