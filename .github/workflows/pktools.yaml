@@ -1,0 +1,59 @@
+name: Railway Operation Simulator
+on: [push]
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+      fail-fast: false
+    runs-on: ${{ matrix.os }}
+    name: Build Libraries (${{ matrix.os }})
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+      - name: Update Clang (macOS)
+        run: |
+          brew update
+          brew upgrade llvm
+        if: ${{ matrix.os  == 'macos-latest' }}
+      - name: Set environment (macOS)
+        run: |
+          export CXX="/usr/local/opt/llvm/bin/clang++"
+          export CC="/usr/local/opt/llvm/bin/clang"
+        if: ${{ matrix.os == 'macos-latest' }}
+      - name: Setup CMake
+        uses: lukka/get-cmake@latest
+      - name: Setup Conan
+        uses: turtlebrowser/get-conan@main
+      - name: Configure Conan
+        run: |
+          conan profile new default --detect
+          conan profile update settings.compiler.libcxx=libstdc++11 default
+          conan install . --output-folder=build -s compiler=clang --build=missing --install-folder=build
+        if: ${{ matrix.os  == 'macos-latest' }}
+      - name: Configure Conan
+        run: |
+          conan profile new default --detect
+          conan profile update settings.compiler.libcxx=libstdc++11 default
+          conan install . --output-folder=build --build=missing --install-folder=build
+        if: ${{ matrix.os  == 'ubuntu-latest' }}
+      - name: Configure Conan
+        run: |
+          conan profile new default --default
+          conan profile update settings.compiler.libcxx=libstdc++11 default
+          conan install . --output-folder=build -s compiler=gcc --build=missing --install-folder=build -s compiler.version=12 -s compiler.libcxx=libstdc++11
+        if: ${{ matrix.os == 'windows-latest' }}
+      - name: Configure CMake
+        run: |
+          cmake -Bbuild -DCMAKE_EXPORT_COMPILE_COMMANDS=1
+          mv build/compile_commands.json .
+        if: ${{ matrix.os != 'windows-latest' }}
+      - uses: seanmiddleditch/gha-setup-ninja@master
+        if: ${{ matrix.os == 'windows-latest' }}
+      - name: Configure CMake
+        run: |
+          cmake -Bbuild -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -G "Ninja"
+          mv build/compile_commands.json .
+        if: ${{ matrix.os == 'windows-latest' }}
+      - name: Run Build
+        run: cmake --build build
